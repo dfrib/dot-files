@@ -18,19 +18,19 @@ Project](http://orgmode.org/worg/org-contrib/babel/intro.html),  based on
 ### Before DOOM
 
 Prior to using the configuration tracked in this repository, I was using the
-cofiguration covered in my
+configuration covered in my
 [`dfrib/emacs_setup`](https://github.com/dfrib/emacs_setup) repository, which
 was a standard Emacs custom configuration centered around
-[`cmake-ide`](https://github.com/atilaneves/cmake-ide) with
+[`cmake-ide`](https://github.com/atilaneves/cmake-ide) and
 [`rtags`](https://github.com/Andersbakken/rtags) for setting up C++ IDE-like
 Emacs features.
 
 ### The DOOM Era
 
 I have since migrated to use a non-evil configuration of [DOOM
-Emacs](https://github.com/hlissner/doom-emacs), moreover switching for
-`cmake-ide` and `rtags` to [`ccls`](https://github.com/MaskRay/ccls) for my C++
-IDE-like Emacs feature needs.
+Emacs](https://github.com/hlissner/doom-emacs), moreover switching out
+`cmake-ide` and `rtags` in favour of [`ccls`](https://github.com/MaskRay/ccls)
+for my C++ IDE-like Emacs feature needs.
 
 My non-evil configuration was initially forked from
 [`UndeadKernel/emacs_doom_private`](https://github.com/UndeadKernel/emacs_doom_private),
@@ -141,7 +141,7 @@ $ cmake --build Release
 
 ### Installing DOOM Emacs
 
-#### Personall settings
+#### Personal settings
 
 Clone this repository and place a symlink `~/.doom.d` to the `emacs/.doom.d`
 folder of this repository.
@@ -149,7 +149,7 @@ folder of this repository.
 E.g.:
 
 ```bash
-$ cd ~opensource
+$ cd ~/opensource
 $ git clone https://github.com/dfrib/dot-files.git
 $ ln -s ~/opensource/dot-files/emacs/.doom.d ~/.doom.d
 ```
