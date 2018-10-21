@@ -1,0 +1,23 @@
+.DS_Store
+
+`(let ((type-ignore (yas-choose-value '("(none)" "c++" "python" "ruby" "java" "js"))))
+    (string-join
+       (cond ((string= type-ignore "c++")
+              '("build"))
+             ((string= type-ignore "python")
+              '("*.py[cod]"
+                "*.egg"
+                "build"
+                "htmlcov"))
+             ((string= type-ignore "ruby")
+             '(".ruby-version"
+               ".bundle"
+               "vendor"
+               "Gemfile.lock"
+               "coverage"))
+             ((string= type-ignore "java")
+             '("*.class"
+               "build"))
+             ((string= type-ignore "js")
+             '("*.tern-port")))
+"\n"))`
