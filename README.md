@@ -33,7 +33,7 @@ Emacs](https://github.com/hlissner/doom-emacs), moreover switching for
 IDE-like Emacs feature needs.
 
 My non-evil configuration was initially forked from
-[`UndeadKernel/emacs_doom_private``](https://github.com/UndeadKernel/emacs_doom_private),
+[`UndeadKernel/emacs_doom_private`](https://github.com/UndeadKernel/emacs_doom_private),
 see [the actual fork](https://github.com/dfrib/emacs_doom_private) for the
 history prior to the creation of this repository.
 
