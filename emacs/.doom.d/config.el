@@ -432,21 +432,13 @@ _g_:goto      _s_:split          _q_:cancel
          (if (> n 0) (message "%d/%d" (+ i 1) n))) "next")
   ("p" (-let [(i . n) (lsp-ui-find-prev-reference)]
          (if (> n 0) (message "%d/%d" (+ i 1) n))) "prev")
-  ("R" (-let [(i . n) (lsp-ui-find-prev-reference
-                       (lambda (x)
-                         (/= (logand (gethash "role" x 0) 8) 0)))]
+  ("R" (-let [(i . n) (lsp-ui-find-prev-reference '(:context (:role 8)))]
          (if (> n 0) (message "read %d/%d" (+ i 1) n))) "prev read" :bind nil)
-  ("r" (-let [(i . n) (lsp-ui-find-next-reference
-                       (lambda (x)
-                         (/= (logand (gethash "role" x 0) 8) 0)))]
+  ("r" (-let [(i . n) (lsp-ui-find-next-reference '(:context (:role 8)))]
          (if (> n 0) (message "read %d/%d" (+ i 1) n))) "next read" :bind nil)
-  ("W" (-let [(i . n) (lsp-ui-find-prev-reference
-                       (lambda (x)
-                         (/= (logand (gethash "role" x 0) 16) 0)))]
+  ("W" (-let [(i . n) (lsp-ui-find-prev-reference '(:context (:role 16)))]
          (if (> n 0) (message "write %d/%d" (+ i 1) n))) "prev write" :bind nil)
-  ("w" (-let [(i . n) (lsp-ui-find-next-reference
-                       (lambda (x)
-                         (/= (logand (gethash "role" x 0) 16) 0)))]
+  ("w" (-let [(i . n) (lsp-ui-find-next-reference '(:context (:role 16)))]
          (if (> n 0) (message "write %d/%d" (+ i 1) n))) "next write" :bind nil)
   ("q" nil "stop")
   )
