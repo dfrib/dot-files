@@ -156,13 +156,14 @@ $ ln -s ~/opensource/dot-files/emacs/.doom.d ~/.doom.d
 
 #### DOOM Emacs
 
-Taking parts of _Quick Start_ from
-[`hlissner/doom-emacs`](https://github.com/hlissner/doom-emacs)
+Taking parts of _Quick Start_ from `develop` branch of
+[`hlissner/doom-emacs`](https://github.com/hlissner/doom-emacs/blob/develop/README.md)
 
 ```bash
 $ git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 $ cd ~/.emacs.d
-$ make install
+$ git checkout develop
+$ make quickstart
 ```
 
 Every time you modify your `~/.doom.em/init.el`, make sure to run:
