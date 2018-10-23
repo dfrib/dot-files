@@ -367,21 +367,32 @@ _g_:goto      _s_:split          _q_:cancel
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Flycheck
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(after! flycheck
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+  )
+
 ;; Let flycheck search for required files in the `load-path' and the current folder.
-(setq flycheck-emacs-lisp-load-path '("./"))
+;(setq flycheck-emacs-lisp-load-path '("./"))
 
 ;; disable using hooks
-(add-hook 'text-mode-hook (lambda ()
-                            (flycheck-mode -1)))
-(add-hook 'org-mode-hook (lambda ()
-(flycheck-mode -1)))
+;; (add-hook 'text-mode-hook (lambda ()
+;;                             (flycheck-mode -1)))
+;; (add-hook 'org-mode-hook (lambda ()
+;; (flycheck-mode -1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LSP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; LSP-Mode
+;; (def-package! lsp-mode
+;;   :commands (lsp-mode))
+
 (def-package! lsp-mode
-  :commands (lsp-mode))
+  :defer t
+  :init
+  ;; (setq lsp-project-blacklist '("/CC/"))
+  )
 
 ;; LSP-UI
 ;;https://github.com/MaskRay/Config
@@ -393,6 +404,8 @@ _g_:goto      _s_:split          _q_:cancel
    ;; Disable sideline hints
    lsp-ui-sideline-enable nil
    lsp-ui-sideline-ignore-duplicate t
+   ;; Disable imenu
+   lsp-ui-imenu-enable nil
    ;; Disable ui-doc (already present in minibuffer)
    lsp-ui-doc-enable nil
    lsp-ui-doc-header nil
@@ -404,7 +417,17 @@ _g_:goto      _s_:split          _q_:cancel
    ;lsp-ui-peek-fontify t
    lsp-ui-peek-always-show t
    lsp-ui-peek-force-fontify nil
-   lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
+   lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs))
+   ;; Flycheck
+   lsp-ui-flycheck-enable t
+   )
+
+  ;; (defun +my/lsp-ui-doc--eldoc (&rest _)
+  ;;   (when (and (lsp--capability "documentHighlightProvider")
+  ;;              lsp-highlight-symbol-at-point)
+  ;;     (lsp-symbol-highlight))
+  ;;   (lsp--text-document-signature-help)
+  ;;     lsp-ui-doc--string-eldoc)
 
   ;(advice-add #'lsp-ui-doc--eldoc :override #'+my/lsp-ui-doc--eldoc)
 
@@ -449,7 +472,7 @@ _g_:goto      _s_:split          _q_:cancel
 
 ;; LSP-Company
 (def-package! company-lsp
-  :after lsp-mode)
+  :after company lsp-mode)
 (set-company-backend! '(c-mode c++-mode) '(company-lsp company-files company-yasnippet))
 (after! lsp-mode
   (setq company-lsp-enable-snippet t)
@@ -464,10 +487,10 @@ _g_:goto      _s_:split          _q_:cancel
 )
 
 ;; LSP-Flycheck
-(require 'lsp-ui-flycheck)
-(with-eval-after-load 'lsp-mode
-  (add-hook 'lsp-after-open-hook (lambda () (lsp-ui-flycheck-enable 1))))
-(add-hook 'c-mode-common-hook 'flycheck-mode) ;; Turn on flycheck for C++ buffers
+;; (require 'lsp-ui-flycheck)
+;; (with-eval-after-load 'lsp-mode
+;;   (add-hook 'lsp-after-open-hook (lambda () (lsp-ui-flycheck-enable 1))))
+;; (add-hook 'c-mode-common-hook 'flycheck-mode) ;; Turn on flycheck for C++ buffers
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CCLS
@@ -480,9 +503,10 @@ _g_:goto      _s_:split          _q_:cancel
     (user-error nil)))
 
 (def-package! ccls
-  :commands lsp-ccls-enable
+  :commands (lsp-ccls-enable)
   ;; run ccls by default in C++ files
-  :init (add-hook! (c-mode c++-mode cuda-mode objc-mode) #'+ccls//enable)
+  ;:init (add-hook! (c-mode c++-mode cuda-mode objc-mode) #'+ccls//enable)
+  :init (add-hook! 'c-mode-common-hook #'+ccls//enable)
   :config
   (setq ccls-executable (expand-file-name "~/opensource/ccls/Release/ccls")
         ccls-cache-dir (concat doom-cache-dir ".ccls_cached_index")
