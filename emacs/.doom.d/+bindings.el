@@ -152,7 +152,7 @@
    "s" #'+workspace/save-session
    "l" #'+workspace/load-session
    "L" #'+workspace/load-last-session
-   "o" #'doom/kill-other-buffers
+   "o" #'doom/window-enlargen ;doom/kill-other-buffers
    "u" #'winner-undo
    "U" #'winner-redo
    "p" #'+workspace/switch-left
@@ -208,7 +208,7 @@
  "C-'"     #'counsel-imenu
  "C-c g"   #'counsel-git
  "C-c j"   #'counsel-git-grep
- "C-c k"   #'counsel-ag
+ "C-c k"   #'+ivy/project-search-from-cwd
  "C-x l"   #'counsel-locate
  ;; Repl Toggle
  "C-c C-z" #'+eval/open-repl
