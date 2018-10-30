@@ -353,6 +353,12 @@ _g_:goto      _s_:split          _q_:cancel
   ;; Add a kill action to DOOM's buffer switching
   (ivy-set-actions '+ivy/switch-workspace-buffer '(("k" kill-buffer "kill"))))
 
+(after! counsel
+  ;; Override the default ignore regexp to not ignore dot-files.
+  (setq counsel-find-file-ignore-regexp
+        "\(?:^[#]\)\|\(?:[#~]$\)\|\(?:^Icon?\)"
+  ))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Spell checking
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
