@@ -489,11 +489,11 @@ _g_:goto      _s_:split          _q_:cancel
   (setq company-lsp-async t))
 
 ;; LSP-python
-(def-package! lsp-python
-  :init (add-hook! python-mode #'lsp-python-enable)
-  :config
-  (set-company-backend! 'python-mode 'company-lsp)
-)
+;; (def-package! lsp-python
+;;   :init (add-hook! python-mode #'lsp-python-enable)
+;;   :config
+;;   (set-company-backend! 'python-mode 'company-lsp)
+;; )
 
 ;; LSP-Flycheck
 ;; (require 'lsp-ui-flycheck)

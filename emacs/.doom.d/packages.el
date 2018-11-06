@@ -13,7 +13,7 @@
 (package! company-lsp)
 (package! lsp-mode)
 (package! lsp-ui)
-(package! lsp-python)
+;(package! lsp-python)
 
 ;; misc
 (package! ag)
