@@ -75,7 +75,9 @@
    ;; "e l B" #'org-beamer-export-as-latex
    ;; "e l P" #'org-beamer-export-to-pdf
    "l"     #'org-store-link
-   "b"     #'+boy/org-babel-hydra/body)
+   "b"     #'+boy/org-babel-hydra/body
+   "d"     #'org-do-demote
+   "p"     #'org-do-promote)
  ;; lsp / ccls related bindings
  (:prefix "C-c c"
    ;; lsp
