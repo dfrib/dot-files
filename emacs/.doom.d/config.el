@@ -45,6 +45,9 @@
       mouse-wheel-follow-mouse t                    ; scroll window under mouse
       scroll-step 1)
 
+;; Do not automatically copy selected text.
+(setq select-enable-primary nil)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Overall theme & visual behaviour
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
