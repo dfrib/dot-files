@@ -70,6 +70,21 @@
 ;;(setq doom-theme 'doom-sourcerer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; PlantUML
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (use-package plantuml-mode
+;;   :mode "\\.plantuml\\'"
+;;   :config (setq plantuml-jar-path
+;;                 (expand-file-name "~/opensource/plantuml/plantuml.jar"))
+;; )
+(after! plantuml-mode
+  (setq plantuml-jar-path
+                (expand-file-name "~/opensource/plantuml/plantuml.jar"))
+  )
+
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org-mode and org-capture
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq +org-dir "~/org/")
