@@ -568,6 +568,20 @@ _g_:goto      _s_:split          _q_:cancel
 ;; (ccls/vars 3) => field or local variable
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Code formatting
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Hook for `clang-format-buffer'
+(defun my-after-save-actions ()
+  "Used in `after-save-hook'."
+  (when (memq this-command '(save-buffer))
+    'clang-format-buffer
+    ))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook 'my-after-save-actions)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; GDB
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Open debugging window style

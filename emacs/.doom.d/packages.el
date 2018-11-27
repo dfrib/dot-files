@@ -18,3 +18,4 @@
 ;; misc
 (package! ag)
 (package! resize-window)
+(package! clang-format)
