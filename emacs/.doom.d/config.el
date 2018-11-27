@@ -495,12 +495,15 @@ _g_:goto      _s_:split          _q_:cancel
 
 ;; LSP-Company
 (def-package! company-lsp
-  :after company lsp-mode)
-(set-company-backend! '(c-mode c++-mode) '(company-lsp company-files company-yasnippet))
-(after! lsp-mode
-  (setq company-lsp-enable-snippet t)
-  (setq company-lsp-cache-candidates nil)
-  (setq company-lsp-async t))
+  :after company lsp-mode
+  :init
+  (setq company-transformers nil
+        company-lsp-async t
+        company-lsp-cache-candidates nil
+        company-lsp-enable-snippet t)
+  )
+(set-company-backend! '(c-mode c++-mode)
+  '(company-lsp company-files company-yasnippet))
 
 ;; LSP-python
 ;; (def-package! lsp-python
