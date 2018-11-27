@@ -226,12 +226,11 @@ and a backlink to the function and the file."
    ((custom-theme-enabled-p 'doom-one)
       ;; Change the style of the BEGIN_SRC and RESULT blocks
       (set-face-attribute 'org-block-begin-line nil
-                          :background "#5c3d5c"
-                          ;:foreground "#744d74"
-                          :foreground "#5c3d5c"
-                          :weight 'bold
+                          :background "#4c516d"
+                          :foreground "#979aaa"
+                          :weight 'normal
                           :height 0.9
-                          :box '(:line-width 2 :color "#5c3d5c")))
+                          :box '(:line-width 2 :color "#4c516d")))
    ;; For other themes, disable the changes
    (t
       (set-face-attribute 'org-block-begin-line nil
