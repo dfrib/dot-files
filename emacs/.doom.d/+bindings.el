@@ -61,6 +61,9 @@
    "E" #'+eshell/open
    :desc "Reload Private Config" "R" #'doom/reload)
  "C-`" #'+popup/toggle
+ ;; Override/expand help bindings
+ (:prefix "C-h"
+   :desc "Describe at point" "." #'helpful-at-point)
  ;; Org related bindings
  (:prefix "C-c o"
    "s"     #'org-caldav-sync
