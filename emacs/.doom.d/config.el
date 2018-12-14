@@ -412,8 +412,9 @@ _g_:goto      _s_:split          _q_:cancel
 ;;   :commands (lsp-mode))
 
 (def-package! lsp-mode
-  :defer t
+  :commands lsp
   :init
+  (setq lsp-auto-guess-root t)
   ;; (setq lsp-project-blacklist '("/CC/"))
   )
 
@@ -421,7 +422,6 @@ _g_:goto      _s_:split          _q_:cancel
 ;;https://github.com/MaskRay/Config
 (def-package! lsp-ui
   :demand t
-  :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq
    ;; Disable sideline hints
@@ -524,9 +524,7 @@ _g_:goto      _s_:split          _q_:cancel
 ;; TODO(dfrib): move the ccls path to private.
 (defun +ccls//enable ()
   (require 'ccls)
-  (condition-case nil
-      (lsp-ccls-enable)
-    (user-error nil)))
+  (lsp))
 
 (def-package! ccls
   :commands (lsp-ccls-enable)

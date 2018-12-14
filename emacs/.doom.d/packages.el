@@ -11,8 +11,8 @@
 ;; lsp and ccls
 (package! ccls)
 (package! company-lsp)
-(package! lsp-mode)
 (package! lsp-ui)
+(package! spinner)                      ; required by lsp-mode
 ;(package! lsp-python)
 
 ;; misc
