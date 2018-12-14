@@ -536,7 +536,7 @@ _g_:goto      _s_:split          _q_:cancel
         ccls-cache-dir (concat doom-cache-dir ".ccls_cached_index")
         ccls-sem-highlight-method 'font-lock)
   (setq ccls-extra-args '("--log-file=/tmp/cc.log"))
-  (setq ccls-extra-init-params
+  (setq ccls-initialization-options
         '(:completion (:detailedLabel t) :xref (:container t)
                       :diagnostics (:frequencyMs 5000)))
   (set-company-backend! '(c-mode c++-mode) '(company-lsp))
