@@ -445,15 +445,6 @@ _g_:goto      _s_:split          _q_:cancel
    lsp-ui-flycheck-enable t
    )
 
-  ;; (defun +my/lsp-ui-doc--eldoc (&rest _)
-  ;;   (when (and (lsp--capability "documentHighlightProvider")
-  ;;              lsp-highlight-symbol-at-point)
-  ;;     (lsp-symbol-highlight))
-  ;;   (lsp--text-document-signature-help)
-  ;;     lsp-ui-doc--string-eldoc)
-
-  ;(advice-add #'lsp-ui-doc--eldoc :override #'+my/lsp-ui-doc--eldoc)
-
   (custom-set-faces
    '(ccls-sem-global-variable-face ((t (:underline t :weight extra-bold))))
    '(lsp-face-highlight-read ((t (:background "sea green"))))
