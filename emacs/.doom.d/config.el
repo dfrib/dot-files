@@ -335,6 +335,13 @@ _g_:goto      _s_:split          _q_:cancel
 ;; Automatic spellchecking in commit messages
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
+;; Submodules hook in status buffer.
+(with-eval-after-load 'magit
+(magit-add-section-hook 'magit-status-sections-hook
+                            'magit-insert-modules
+                            'magit-insert-unpulled-from-upstream)
+  (setq magit-module-sections-nested nil))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IBuffer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
