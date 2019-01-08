@@ -120,6 +120,12 @@
    :desc "Vars (any)"            "C-v" (λ! (ccls/vars 7))
    ;; code lens
    :desc "Toggle CCLS code lens"   "L" #'ccls-code-lens-mode)
+ (:prefix "C-c c R"
+   :desc "Ref. address"            "a" #'ccls/references-address
+   :desc "Ref. not called"         "n" #'ccls/references-not-call
+   :desc "Ref. macro expansions"   "m" #'ccls/references-macro
+   :desc "Ref. read   "            "r" #'ccls/references-read
+   :desc "Ref. write"              "w" #'ccls/references-write)
  ;; Snippets
  (:prefix "C-c s"
    :desc "New snippet"           "n" #'yas-new-snippet
