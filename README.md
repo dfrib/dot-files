@@ -163,7 +163,7 @@ Taking parts of _Quick Start_ from `develop` branch of
 $ git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 $ cd ~/.emacs.d
 $ git checkout develop
-$ make quickstart
+$ ./bin/doom quickstart
 ```
 
 Every time you modify your `~/.doom.em/init.el`, make sure to run:
