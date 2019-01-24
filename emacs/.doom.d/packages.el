@@ -1,6 +1,5 @@
 ;;; ~/.doom.d/packages.el -*- no-byte-compile: t; -*-
-(disable-packages! cmake-mode
-                   company-irony
+(disable-packages! company-irony
                    company-irony-c-headers
                    flycheck-irony
                    irony
