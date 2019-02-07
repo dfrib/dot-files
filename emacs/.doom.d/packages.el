@@ -18,3 +18,4 @@
 (package! ag)
 (package! resize-window)
 (package! clang-format)
+(package! command-log-mode)
