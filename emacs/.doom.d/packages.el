@@ -19,3 +19,4 @@
 (package! resize-window)
 (package! clang-format)
 (package! command-log-mode)
+(package! jinja2-mode)

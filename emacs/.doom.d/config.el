@@ -52,16 +52,22 @@
 ;; Overall theme & visual behaviour
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Font setup
-(setq doom-font (font-spec :family "Meslo LG M DZ for Powerline" :size 30)
+(setq doom-font (font-spec :family "Meslo LG M DZ for Powerline" :size 14)
       doom-variable-pitch-font (font-spec :family "Meslo LG M DZ for Powerline")
       doom-unicode-font (font-spec :family "DejaVu Sans Mono")
-      doom-big-font (font-spec :family "Meslo LG M DZ for Powerline" :size 40))
+      doom-big-font (font-spec :family "Meslo LG M DZ for Powerline" :size 16))
+
+;; (setq doom-font (font-spec :family "Meslo LG M DZ for Powerline" :size 20)
+;;       doom-variable-pitch-font (font-spec :family "Meslo LG M DZ for Powerline")
+;;       doom-unicode-font (font-spec :family "DejaVu Sans Mono")
+;;       doom-big-font (font-spec :family "Meslo LG M DZ for Powerline" :size 24))
+
 
 ;; All themes are safe to load
 ;(setq custom-safe-themes t)
 
 ;; Doom theme
-(setq doom-theme 'doom-one)
+;(setq doom-theme 'doom-one)
 ;;(setq doom-theme 'doom-vibrant)
 ;;(setq doom-theme 'doom-nord)
 ;;(setq doom-theme 'doom-nova)
@@ -73,6 +79,13 @@
 ;; Persp / workspaces
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq-default +workspaces-switch-project-function #'ignore)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Projectile
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (setq projectile-enable-caching nil)
+;; (setq projectile-project-compilation-cmd "./run.py")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; PlantUML
@@ -88,6 +101,12 @@
   )
 
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+
+;; (add-to-list 'auto-mode-alist '("Dockerfile.*\\" . plantuml-mode))
+
+
+;; Jinja2
+(add-to-list 'auto-mode-alist '("\\.jinja\\'" . jinja2-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org-mode and org-capture
@@ -267,7 +286,16 @@ _g_:goto      _s_:split          _q_:cancel
     ("n" org-babel-next-src-block)
     ("p" org-babel-previous-src-block)
     ("l" recenter-top-bottom)
-    ("q" nil :color blue)))
+    ("q" nil :color blue))
+  )
+
+(after! org
+  ;; Point to plantuml jar.
+  (setq org-plantuml-jar-path
+        (expand-file-name "~/opensource/plantuml/plantuml.jar"))
+  ;; Display images inline in org document.
+  ;(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Personal variables?

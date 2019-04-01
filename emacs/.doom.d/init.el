@@ -7,7 +7,7 @@
 ;; Doom features
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (doom! :feature
-      ;debugger          ; FIXME stepping through code, to help you add bugs
+       debugger          ; FIXME stepping through code, to help you add bugs
        eval              ; run code, run (also, repls)
       ;(evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
@@ -52,7 +52,7 @@
        (window-select +switch-window)  ; visually switch windows
 
        :editor
-      ;(format +onsave)  ; automated prettiness
+       (format +onsave)  ; automated prettiness
       ;multiple-cursors  ; editing in many places at once
       ;parinfer          ; turn lisp into python, sort of
       ;rotate-text       ; cycle region at point between text candidates
@@ -68,7 +68,7 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :tools
-      ;docker
+       docker
       ;editorconfig      ; let someone else argue about tabs vs spaces
       ;ein               ; tame Jupyter notebooks with emacs
       ;gist              ; interacting with github gists
