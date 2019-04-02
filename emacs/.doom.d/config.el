@@ -222,6 +222,8 @@ and a backlink to the function and the file."
 ;; place latex-captions below figures and tables
 (setq org-latex-caption-above nil)
 
+(setq org-babel-python-command "python3")
+
 ;; TODO(dfrib): Look into org-noter to annotate e.g. PDF document in an external
 ;; synched org document.
 ;; https://github.com/weirdNox/org-noter
