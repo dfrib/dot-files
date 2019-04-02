@@ -1,0 +1,7 @@
+# Use python package `argcomplete`.
+# $ pip3 install argcomplete --user
+# $ activate-global-python-argcomplete --user
+# Use this file to source the bash completion script.
+for bcfile in ~/.bash_completion.d/* ; do
+  . $bcfile
+done
