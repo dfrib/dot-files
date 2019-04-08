@@ -93,17 +93,15 @@
 ;; (use-package plantuml-mode
 ;;   :mode "\\.plantuml\\'"
 ;;   :config (setq plantuml-jar-path
-;;                 (expand-file-name "~/opensource/plantuml/plantuml.jar"))
+;;                 (expand-file-name "~/opensrc/plantuml/plantuml.jar"))
 ;; )
 (after! plantuml-mode
   (setq plantuml-jar-path
-                (expand-file-name "~/opensource/plantuml/plantuml.jar"))
+                (expand-file-name "~/opensrc/plantuml/plantuml.jar"))
   )
 
-(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
-
+;; (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 ;; (add-to-list 'auto-mode-alist '("Dockerfile.*\\" . plantuml-mode))
-
 
 ;; Jinja2
 (add-to-list 'auto-mode-alist '("\\.jinja\\'" . jinja2-mode))
@@ -294,7 +292,7 @@ _g_:goto      _s_:split          _q_:cancel
 (after! org
   ;; Point to plantuml jar.
   (setq org-plantuml-jar-path
-        (expand-file-name "~/opensource/plantuml/plantuml.jar"))
+        (expand-file-name "~/opensrc/plantuml/plantuml.jar"))
   ;; Display images inline in org document.
   ;(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
   )
@@ -565,7 +563,7 @@ _g_:goto      _s_:split          _q_:cancel
   ;:init (add-hook! (c-mode c++-mode cuda-mode objc-mode) #'+ccls//enable)
   :init (add-hook! 'c-mode-common-hook #'+ccls//enable)
   :config
-  (setq ccls-executable (expand-file-name "~/opensource/ccls/Release/ccls")
+  (setq ;ccls-executable (expand-file-name "~/opensource/ccls/Release/ccls")
         ccls-cache-dir (concat doom-cache-dir ".ccls_cached_index")
         ccls-sem-highlight-method 'font-lock)
   (setq ccls-extra-args '("--log-file=/tmp/cc.log"))

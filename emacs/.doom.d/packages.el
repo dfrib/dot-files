@@ -1,22 +1,23 @@
 ;;; ~/.doom.d/packages.el -*- no-byte-compile: t; -*-
-(disable-packages! company-irony
-                   company-irony-c-headers
-                   flycheck-irony
-                   irony
-                   irony-eldoc
-                   ivy-rtags
-                   rtags)
+;; (disable-packages! cmake-mode
+;;                    company-irony
+;;                    company-irony-c-headers
+;;                    flycheck-irony
+;;                    irony
+;;                    irony-eldoc
+;;                    ivy-rtags
+;;                    rtags)
 
-;; lsp and ccls
-(package! ccls)
+;; ;; lsp and ccls
+;; (package! ccls)
 (package! company-lsp)
 (package! lsp-ui)
 (package! spinner)                      ; required by lsp-mode
-;(package! lsp-python)
+;; ;(package! lsp-python)
 
-;; misc
+;; ;; misc
 (package! ag)
-(package! resize-window)
+;; (package! resize-window)
 (package! clang-format)
 (package! command-log-mode)
 (package! jinja2-mode)

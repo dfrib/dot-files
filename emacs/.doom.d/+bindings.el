@@ -270,7 +270,7 @@
      "<M-right>"     #'+snippets/goto-end-of-field
      "<M-left>"      #'+snippets/goto-start-of-field
      "<M-backspace>" #'+snippets/delete-to-start-of-field
-     [backspace]     #'+snippets/delete-backward-char
+     ;[backspace]     #'+snippets/delete-backward-char
      [delete]        #'+snippets/delete-forward-char-or-field))
  ;; flycheck
  (:after flycheck
