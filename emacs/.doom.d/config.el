@@ -248,6 +248,13 @@ and a backlink to the function and the file."
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
 
+;; So that ox-hugo export options are available in the Org Export Dispatcher
+;; menu
+;; (with-eval-after-load 'ox
+;;   (require 'ox-hugo))
+(after! ox
+  (require 'ox-hugo))
+
 ;; Add a an option to use lines to frame the exported code block.
 (setq org-latex-minted-options '(("frame" "lines")))
 

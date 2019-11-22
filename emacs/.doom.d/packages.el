@@ -8,6 +8,9 @@
 ;;                    ivy-rtags
 ;;                    rtags)
 
+;; Writing & blogging
+(package! ox-hugo)
+
 ;; ;; lsp and ccls
 ;; (package! ccls)
 (package! company-lsp)
