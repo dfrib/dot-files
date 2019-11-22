@@ -156,7 +156,9 @@ and a backlink to the function and the file."
         org-log-done 'time ; record the time when an element was marked done/checked
         org-fontify-done-headline nil ; do not change the font of DONE items
         org-ellipsis " ↴ "
-        org-bullets-mode 1)
+        org-bullets-mode 1
+        org-directory "~/org"
+        org-latex-caption-above nil)
 
   ;; Clear the org-capture-templates before adding new teampltes
   ;; (Use only custom ones)
@@ -219,6 +221,37 @@ and a backlink to the function and the file."
 
 ;; place latex-captions below figures and tables
 (setq org-latex-caption-above nil)
+
+;; Custom build command for org to latex pdf export.
+(setq org-latex-pdf-process
+      '("xelatex -shell-escape -interaction nonstopmode %f"
+        "xelatex -shell-escape -interaction nonstopmode %f"
+        "xelatex -shell-escape -interaction nonstopmode %f"))
+
+;; Configure Org to use minted.
+(require 'ox-latex)
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-listings 'minted)
+
+;; Custom org latex class.
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+               '("zarticle"
+                 "\\documentclass[11pt,Wordstyle]{Zarticle}
+                      \\usepackage[utf8]{inputenc}
+                      \\usepackage{graphicx}
+                          [NO-DEFAULT-PACKAGES]
+                          [PACKAGES]
+                          [EXTRA] "
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}"))))
+
+;; Add a an option to use lines to frame the exported code block.
+(setq org-latex-minted-options '(("frame" "lines")))
+
+
 
 (setq org-babel-python-command "python3")
 
@@ -455,6 +488,8 @@ _g_:goto      _s_:split          _q_:cancel
   :commands lsp
   :init
   (setq lsp-auto-guess-root t)
+  :config
+  (add-to-list 'lsp-file-watch-ignored "build")
   ;; (setq lsp-project-blacklist '("/CC/"))
   )
 
