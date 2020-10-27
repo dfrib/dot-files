@@ -204,12 +204,6 @@
  ;; Company mode
  "C-;" #'+company/complete
  ;; Counsel
- (:when (featurep! :completion ivy)
-   (:after counsel
-     (:map counsel-ag-map
-       [backtab]  #'+ivy/wgrep-occur      ; search/replace on results
-       "C-SPC"    #'ivy-call-and-recenter ; preview
-       "M-RET"    (+ivy-do-action! #'+ivy-git-grep-other-window-action))))
  "C-h b"   #'counsel-descbinds
  "C-M-y"   #'counsel-yank-pop
  "C-h F"   #'counsel-faces
