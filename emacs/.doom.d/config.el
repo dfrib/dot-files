@@ -124,6 +124,12 @@
 ;(setq display-line-numbers-type t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Cursor movement
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(after! smartparens
+  (smartparens-global-mode -1))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Persp / workspaces
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq-default +workspaces-switch-project-function #'ignore)
@@ -148,7 +154,7 @@
                 (expand-file-name "~/opensrc/plantuml/plantuml.jar"))
   )
 
-;; (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 ;; (add-to-list 'auto-mode-alist '("Dockerfile.*\\" . plantuml-mode))
 
 ;; Jinja2
@@ -435,7 +441,7 @@
 (defvar +lsp-blacklist nil)
 
 ;;;###autoload
-(defvar +my-use-eglot 't)
+(defvar +my-use-eglot nil)
 
 ;;;###autoload
 (defun +ccls|enable ()

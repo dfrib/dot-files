@@ -30,11 +30,6 @@
  "C-x k"         #'doom/kill-this-buffer-in-all-windows
  ;; Switching windows
  "C-x p"         #'+popup/other
- ;; Smart-forward
- "M-<up>"    #'smart-up
- "M-<down>"  #'smart-down
- "M-<left>"  #'smart-backward
- "M-<right>" #'smart-forward
  ;; Restore common editing keys in minibuffer
  (:map (minibuffer-local-map
         minibuffer-local-ns-map
@@ -188,14 +183,18 @@
  "C-c p p" #'projectile-switch-project
  ;; Smartparens
  (:after smartparens
-   (:map smartparens-mode-map
-     "C-M-a"     #'sp-beginning-of-sexp
-     "C-M-e"     #'sp-end-of-sexp
-     "C-M-f"     #'sp-forward-sexp
-     "C-M-b"     #'sp-backward-sexp
-     "C-M-d"     #'sp-splice-sexp
-     "C-M-k"     #'sp-kill-sexp
-     "C-M-t"     #'sp-transpose-sexp
+  (:map smartparens-mode-map
+     "C-<right>" nil
+     "C-<left>"  nil
+     "C-<up>"    nil
+     "C-<down>"  nil
+     ;; "C-M-a"     #'sp-beginning-of-sexp
+     ;; "C-M-e"     #'sp-end-of-sexp
+     ;; "C-M-f"     #'sp-forward-sexp
+     ;; "C-M-b"     #'sp-backward-sexp
+     ;; "C-M-d"     #'sp-splice-sexp
+     ;; "C-M-k"     #'sp-kill-sexp
+     ;; "C-M-t"     #'sp-transpose-sexp
      ;; "C-<right>" #'sp-forward-slurp-sexp
      ;; "M-<right>" #'sp-forward-barf-sexp
      ;; "C-<left>"  #'sp-backward-slurp-sexp
@@ -239,7 +238,12 @@
    "M-RET" #'emr-show-refactor-menu)
  (:after cc-mode
    (:map c++-mode-map
-     "M-RET" #'srefactor-refactor-at-point)
+     "M-RET"     #'srefactor-refactor-at-point
+     "C-<right>" #'forward-symbol
+     "C-<left>"  #'backward-word
+     "C-<up>"    #'c-beginning-of-statement
+     "C-<down>"  #'c-end-of-statement
+    )
    (:map c-mode-map
      "M-RET" #'srefactor-refactor-at-point))
  (:after help-mode

@@ -57,7 +57,6 @@
 ;(package! lsp-mode :ignore t)
 ;(package! lsp-treemacs :ignore t)
 ;(package! lsp-ui :ignore t)
-;(package! company-lsp :ignore t)
 (package! ccls)
 (package! lsp-mode)
 (package! lsp-treemacs)
