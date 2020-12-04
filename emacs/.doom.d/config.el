@@ -119,6 +119,12 @@
 ;;(setq doom-theme 'doom-solarized-light)
 ;;(setq doom-theme 'doom-sourcerer)
 
+;; User brighter comments for doom one, particularly
+;; useful for reveal js presentations that inherits
+;; code highlighting from one's emacs theme.
+(setq doom-one-brighter-comments t)
+(setq doom-one-comment-bg nil)
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 ;(setq display-line-numbers-type t)
