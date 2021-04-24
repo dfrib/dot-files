@@ -157,7 +157,9 @@
 ;; )
 (after! plantuml-mode
   (setq plantuml-jar-path
-                (expand-file-name "~/opensrc/plantuml/plantuml.jar"))
+        (expand-file-name "~/opensrc/plantuml/plantuml.jar"))
+  (setq plantuml-default-exec-mode 'jar)
+  (setq plantuml-indent-level 2)
   )
 
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
@@ -328,12 +330,12 @@
         company-global-modes '(not comint-mode erc-mode message-mode help-mode gud-mode)
         ))
 
-(use-package! company-lsp
-  :after lsp-mode
-  :config
-  (setq company-transformers nil company-lsp-cache-candidates nil)
-  (set-company-backend! 'lsp-mode 'company-lsp)
-  )
+;; (use-package! company-lsp
+;;   :after lsp-mode
+;;   :config
+;;   (setq company-transformers nil company-lsp-cache-candidates nil)
+;;   (set-company-backend! 'lsp-mode 'company-lsp)
+;;   )
 
 (after! flycheck
   ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
@@ -422,13 +424,13 @@
   )
 
 ;; LSP-Company
-(use-package! company-lsp
-  ;:load-path "~/Dev/Emacs/company-lsp"
-  :after lsp-mode
-  :config
-  (setq company-transformers nil company-lsp-cache-candidates nil)
-  (set-company-backend! 'lsp-mode 'company-lsp)
-  )
+;; (use-package! company-lsp
+;;   ;:load-path "~/Dev/Emacs/company-lsp"
+;;   :after lsp-mode
+;;   :config
+;;   (setq company-transformers nil company-lsp-cache-candidates nil)
+;;   (set-company-backend! 'lsp-mode 'company-lsp)
+;;   )
 
 ;(set-company-backend! '(c-mode c++-mode)
 ;  '(company-lsp company-files company-yasnippet))
@@ -546,6 +548,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Code formatting
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq +format-with-lsp nil)
 (after! c++-mode
   (set-formatter! 'c++-mode 'clang-format)
   )

@@ -61,7 +61,7 @@
 (package! lsp-mode)
 (package! lsp-treemacs)
 (package! lsp-ui)
-(package! company-lsp)
+;(package! company-lsp)
 (package! spinner)                      ; required by lsp-mode
 ;; (package! rust-mode)
 ;; (package! lsp-rust :ignore t)
