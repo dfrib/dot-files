@@ -72,3 +72,4 @@
 ;; Misc
 (package! ag)
 (package! clang-format)
+(package! bazel)

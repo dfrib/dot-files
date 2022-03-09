@@ -174,6 +174,7 @@
  ;; (setq matlab-indent-function t)
  ;; (setq matlab-shell-command "matlab")
 
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Org-mode and org-capture
