@@ -15,7 +15,7 @@
 ;;      directory (for easy access to its source code).
 
 ;; Prevents the unstyled mode-line flash at startup
-;(setq-default mode-line-format nil)
+                                        ;(setq-default mode-line-format nil)
 
 (doom! :input
        ;;chinese
@@ -33,7 +33,7 @@
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       ;doom-quit         ; DOOM quit-message prompts when you quit Emacs
+                                        ;doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;(emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
@@ -57,7 +57,7 @@
        ;;zen               ; distraction-free coding or writing
 
        :editor
-       ;(evil +everywhere); come to the dark side, we have cookies
+                                        ;(evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        (format +onsave)  ; automated prettiness
@@ -72,7 +72,7 @@
 
        :emacs
        (dired             ; making dired pretty [functional]
-       ;+icons          ; colorful icons for dired-mode
+                                        ;+icons          ; colorful icons for dired-mode
         )
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management

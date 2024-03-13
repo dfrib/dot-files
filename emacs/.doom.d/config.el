@@ -440,110 +440,110 @@
 ;; CCLS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;###autoload
-(defvar +ccls-path-mappings [])
+;; ;;;###autoload
+;; (defvar +ccls-path-mappings [])
 
-;;;###autoload
-(defvar +ccls-initial-blacklist [])
+;; ;;;###autoload
+;; (defvar +ccls-initial-blacklist [])
 
-;;;###autoload
-(defvar +lsp-blacklist nil)
+;; ;;;###autoload
+;; (defvar +lsp-blacklist nil)
 
-;;;###autoload
-(defvar +my-use-eglot nil)
+;; ;;;###autoload
+;; (defvar +my-use-eglot nil)
 
-;;;###autoload
-(defun +ccls|enable ()
-  (when (and buffer-file-name (--all? (not (string-match-p it buffer-file-name)) +lsp-blacklist))
-    (require 'ccls)
-    (setq-local lsp-ui-sideline-show-symbol nil)
-    (when (string-match-p "/llvm" buffer-file-name)
-      (setq-local lsp-enable-file-watchers nil))
-    (if +my-use-eglot (call-interactively #'eglot) (lsp))))
+;; ;;;###autoload
+;; (defun +ccls|enable ()
+;;   (when (and buffer-file-name (--all? (not (string-match-p it buffer-file-name)) +lsp-blacklist))
+;;     (require 'ccls)
+;;     (setq-local lsp-ui-sideline-show-symbol nil)
+;;     (when (string-match-p "/llvm" buffer-file-name)
+;;       (setq-local lsp-enable-file-watchers nil))
+;;     (if +my-use-eglot (call-interactively #'eglot) (lsp))))
 
-(defun +my|toggle-eglot ()
-  (interactive)
-  (setq +my-use-eglot (not +my-use-eglot))
-  (message "use: %s" (if +my-use-eglot "eglot" "lsp-mode")))
+;; (defun +my|toggle-eglot ()
+;;   (interactive)
+;;   (setq +my-use-eglot (not +my-use-eglot))
+;;   (message "use: %s" (if +my-use-eglot "eglot" "lsp-mode")))
 
-(defun ccls/callee ()
-  (interactive)
-  (lsp-ui-peek-find-custom "$ccls/call" '(:callee t)))
-(defun ccls/caller ()
-  (interactive)
-  (lsp-ui-peek-find-custom "$ccls/call"))
-(defun ccls/vars (kind)
-  (lsp-ui-peek-find-custom "$ccls/vars" `(:kind ,kind)))
-(defun ccls/base (levels)
-  (lsp-ui-peek-find-custom "$ccls/inheritance" `(:levels ,levels)))
-(defun ccls/derived (levels)
-  (lsp-ui-peek-find-custom "$ccls/inheritance" `(:levels ,levels :derived t)))
-(defun ccls/member (kind)
-  (lsp-ui-peek-find-custom "$ccls/member" `(:kind ,kind)))
+;; (defun ccls/callee ()
+;;   (interactive)
+;;   (lsp-ui-peek-find-custom "$ccls/call" '(:callee t)))
+;; (defun ccls/caller ()
+;;   (interactive)
+;;   (lsp-ui-peek-find-custom "$ccls/call"))
+;; (defun ccls/vars (kind)
+;;   (lsp-ui-peek-find-custom "$ccls/vars" `(:kind ,kind)))
+;; (defun ccls/base (levels)
+;;   (lsp-ui-peek-find-custom "$ccls/inheritance" `(:levels ,levels)))
+;; (defun ccls/derived (levels)
+;;   (lsp-ui-peek-find-custom "$ccls/inheritance" `(:levels ,levels :derived t)))
+;; (defun ccls/member (kind)
+;;   (lsp-ui-peek-find-custom "$ccls/member" `(:kind ,kind)))
 
-;; The meaning of :role corresponds to https://github.com/maskray/ccls/blob/master/src/symbol.h
+;; ;; The meaning of :role corresponds to https://github.com/maskray/ccls/blob/master/src/symbol.h
 
-;; References w/ Role::Address bit (e.g. variables explicitly being taken addresses)
-(defun ccls/references-address ()
-  (interactive)
-  (lsp-ui-peek-find-custom "textDocument/references"
-   (plist-put (lsp--text-document-position-params) :role 128)))
+;; ;; References w/ Role::Address bit (e.g. variables explicitly being taken addresses)
+;; (defun ccls/references-address ()
+;;   (interactive)
+;;   (lsp-ui-peek-find-custom "textDocument/references"
+;;    (plist-put (lsp--text-document-position-params) :role 128)))
 
-;; References w/ Role::Dynamic bit (macro expansions)
-(defun ccls/references-macro ()
-  (interactive)
-  (lsp-ui-peek-find-custom "textDocument/references"
-   (plist-put (lsp--text-document-position-params) :role 64)))
+;; ;; References w/ Role::Dynamic bit (macro expansions)
+;; (defun ccls/references-macro ()
+;;   (interactive)
+;;   (lsp-ui-peek-find-custom "textDocument/references"
+;;    (plist-put (lsp--text-document-position-params) :role 64)))
 
-;; References w/o Role::Call bit (e.g. where functions are taken addresses)
-(defun ccls/references-not-call ()
-  (interactive)
-  (lsp-ui-peek-find-custom "textDocument/references"
-   (plist-put (lsp--text-document-position-params) :excludeRole 32)))
+;; ;; References w/o Role::Call bit (e.g. where functions are taken addresses)
+;; (defun ccls/references-not-call ()
+;;   (interactive)
+;;   (lsp-ui-peek-find-custom "textDocument/references"
+;;    (plist-put (lsp--text-document-position-params) :excludeRole 32)))
 
-;; References w/ Role::Read
-(defun ccls/references-read ()
-  (interactive)
-  (lsp-ui-peek-find-custom "textDocument/references"
-   (plist-put (lsp--text-document-position-params) :role 8)))
+;; ;; References w/ Role::Read
+;; (defun ccls/references-read ()
+;;   (interactive)
+;;   (lsp-ui-peek-find-custom "textDocument/references"
+;;    (plist-put (lsp--text-document-position-params) :role 8)))
 
-;; References w/ Role::Write
-(defun ccls/references-write ()
-  (interactive)
-  (lsp-ui-peek-find-custom "textDocument/references"
-   (plist-put (lsp--text-document-position-params) :role 16)))
+;; ;; References w/ Role::Write
+;; (defun ccls/references-write ()
+;;   (interactive)
+;;   (lsp-ui-peek-find-custom "textDocument/references"
+;;    (plist-put (lsp--text-document-position-params) :role 16)))
 
-(use-package! ccls
-  ;:load-path "~/Dev/Emacs/emacs-ccls"
-  :hook ((c-mode-local-vars c++-mode-local-vars objc-mode-local-vars) . +ccls|enable)
-  :config
-  ;; overlay is slow
-  ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
-  (setq ccls-sem-highlight-method 'font-lock)
-  (add-hook 'lsp-after-open-hook #'ccls-code-lens-mode)
-  (ccls-use-default-rainbow-sem-highlight)
-  ;; https://github.com/maskray/ccls/blob/master/src/config.h
-  (setq
-   ccls-initialization-options
-   `(:clang
-     (:excludeArgs
-      ;; Linux's gcc options. See ccls/wiki
-      ["-falign-jumps=1" "-falign-loops=1" "-fconserve-stack" "-fmerge-constants" "-fno-code-hoisting" "-fno-schedule-insns" "-fno-var-tracking-assignments" "-fsched-pressure"
-       "-mhard-float" "-mindirect-branch-register" "-mindirect-branch=thunk-inline" "-mpreferred-stack-boundary=2" "-mpreferred-stack-boundary=3" "-mpreferred-stack-boundary=4" "-mrecord-mcount" "-mindirect-branch=thunk-extern" "-mno-fp-ret-in-387" "-mskip-rax-setup"
-       "--param=allow-store-data-races=0" "-Wa arch/x86/kernel/macros.s" "-Wa -"]
-      :extraArgs []
-      :pathMappings ,+ccls-path-mappings)
-     :completion
-     (:include
-      (:blacklist
-       ["^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
-        "^/usr/(local/)?include/c\\+\\+/v1/"
-        ]))
-     :index (:initialBlacklist ,+ccls-initial-blacklist :parametersInDeclarations :json-false :trackDependency 1)))
+;; (use-package! ccls
+;;   ;:load-path "~/Dev/Emacs/emacs-ccls"
+;;   :hook ((c-mode-local-vars c++-mode-local-vars objc-mode-local-vars) . +ccls|enable)
+;;   :config
+;;   ;; overlay is slow
+;;   ;; Use https://github.com/emacs-mirror/emacs/commits/feature/noverlay
+;;   (setq ccls-sem-highlight-method 'font-lock)
+;;   (add-hook 'lsp-after-open-hook #'ccls-code-lens-mode)
+;;   (ccls-use-default-rainbow-sem-highlight)
+;;   ;; https://github.com/maskray/ccls/blob/master/src/config.h
+;;   (setq
+;;    ccls-initialization-options
+;;    `(:clang
+;;      (:excludeArgs
+;;       ;; Linux's gcc options. See ccls/wiki
+;;       ["-falign-jumps=1" "-falign-loops=1" "-fconserve-stack" "-fmerge-constants" "-fno-code-hoisting" "-fno-schedule-insns" "-fno-var-tracking-assignments" "-fsched-pressure"
+;;        "-mhard-float" "-mindirect-branch-register" "-mindirect-branch=thunk-inline" "-mpreferred-stack-boundary=2" "-mpreferred-stack-boundary=3" "-mpreferred-stack-boundary=4" "-mrecord-mcount" "-mindirect-branch=thunk-extern" "-mno-fp-ret-in-387" "-mskip-rax-setup"
+;;        "--param=allow-store-data-races=0" "-Wa arch/x86/kernel/macros.s" "-Wa -"]
+;;       :extraArgs []
+;;       :pathMappings ,+ccls-path-mappings)
+;;      :completion
+;;      (:include
+;;       (:blacklist
+;;        ["^/usr/(local/)?include/c\\+\\+/[0-9\\.]+/(bits|tr1|tr2|profile|ext|debug)/"
+;;         "^/usr/(local/)?include/c\\+\\+/v1/"
+;;         ]))
+;;      :index (:initialBlacklist ,+ccls-initial-blacklist :parametersInDeclarations :json-false :trackDependency 1)))
 
-  (after! projectile
-   (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
-  )
+;;   (after! projectile
+;;    (add-to-list 'projectile-globally-ignored-directories ".ccls-cache"))
+;;   )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
